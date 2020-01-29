@@ -1,0 +1,71 @@
+{
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "@debiki/gatsby-plugin-talkyard": "^0.5.8",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "babel-plugin-styled-components": "^1.10.6",
+    "bootstrap": "^4.4.1",
+    "bootstrap-icons": "^1.0.0-alpha2",
+    "commentbox.io": "^2.0.0",
+    "gatsby": "^2.18.12",
+    "gatsby-awesome-pagination": "^0.3.5",
+    "gatsby-image": "^2.2.37",
+    "gatsby-plugin-emotion": "^4.1.18",
+    "gatsby-plugin-less": "^3.0.17",
+    "gatsby-plugin-manifest": "^2.2.34",
+    "gatsby-plugin-netlify": "^2.1.30",
+    "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-page-transitions": "^1.0.8",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-sass": "^2.1.27",
+    "gatsby-plugin-scroll-reveal": "0.0.4",
+    "gatsby-plugin-sharp": "^2.3.10",
+    "gatsby-plugin-sitemap": "^2.2.26",
+    "gatsby-plugin-styled-components": "^3.1.16",
+    "gatsby-source-filesystem": "^2.1.43",
+    "gatsby-source-graphql": "^2.1.29",
+    "gatsby-source-wordpress": "^3.1.54",
+    "gatsby-transformer-sharp": "^2.3.9",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-custom-share": "^0.4.8",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.8.0",
+    "react-share": "^4.0.1",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.1.1",
+    "prettier": "^1.19.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}
