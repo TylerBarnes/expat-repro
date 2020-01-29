@@ -34,13 +34,7 @@ exports.createPages = async ({ graphql, actions }) => {
               name
               slug
             }
-            featured_media {
-              localFile{
-                  childImageSharp {
-                      id
-                  } 
-              }
-          }   
+       
           }
         }
       }
@@ -55,22 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
 
-      allSite {
-        edges {
-          node {
-            siteMetadata {
-              title
-              description
-              author
-            }
-          }
-        }
-      }
-    site {
-       siteMetadata {
-         domain: siteUrl
-        }
-      }  
+     
      }
   `);
 
@@ -91,41 +70,6 @@ exports.createPages = async ({ graphql, actions }) => {
     });
 };
   
-const sortByDateDescending = (a, b) => {
-  const aPubDateInMS = (new Date(a.date)).getTime();
-  const bPubDateInMS = (new Date(b.date)).getTime();
-
-  if (aPubDateInMS > bPubDateInMS) {
-    return 1
-  }
-
-  if (aPubDateInMS < bPubDateInMS) {
-    return -1
-  }
-
-  return 0
-}
-
- const getRelatedPosts = (currentPost, posts) => {
-  const MINIMUM_CATEGORIES_IN_COMMON = 1
-
-  const hasAtLeastOneCategoryInCommon = ({ node }) => {
-    // stop working if we're looking at the same article
-    if (currentPost.id === node.id) {
-      return false
-    }
-    const commonCategories = _.intersectionBy(currentPost.categories, node.categories, (category) => category.slug)
-    return commonCategories.length >= MINIMUM_CATEGORIES_IN_COMMON
-  }
-
-  const filteredResults = posts.filter(hasAtLeastOneCategoryInCommon)
-  if (filteredResults.length > 5) {
-    return filteredResults.sort(sortByDateDescending).slice(0, 5)
-  }
-  return filteredResults
-}
-
-
   // Create archive pages for each category
   allWordpressCategory.edges.forEach(catEdge => {
     // First filter out the posts that belongs to the current category
@@ -177,24 +121,10 @@ const sortByDateDescending = (a, b) => {
       component: slash(postTemplate),
       context: {
         id: edge.node.id,
-        relatedPosts: getRelatedPosts(edge.node, result.data.allWordpressPost.edges),
+        posts:allWordpressPost.edges,
+        catId: edge.node.categories.id,
       },
     });
   });
 };
 
- /* posts.forEach(({edge},index)=>{*/
-/* allWordpressPost.edges.forEach(edge => {
-     
-      createPage({
-        path: `/blogs${edge.node.link}`,
-        component: slash(postTemplate),
-        context: {
-          id: edge.node.id,
-          relatedPosts: getRelatedPosts(edge.node.id, posts),
-        },
-      });
-    
-  });
-
-  };*/

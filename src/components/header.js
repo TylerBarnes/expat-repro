@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Navigation from './Navigation';
 
-import tangoLogo from '../images/expat-guide-turkey-logo.svg';
 import { HeaderWrapper } from './styles/HeaderStyles';
 
 const Header = () => {
   const {
-    site,
+    
     menu: {
       edges: [{ node: menu }],
     },
@@ -46,9 +45,7 @@ const Header = () => {
       <div className="container-fluid">
         <div className="row">
          <div className="col-md-2">
-         <Link to="/">
-              <img src={tangoLogo} alt={site.siteMetadata.title} />
-            </Link>
+        
           </div>
           
           <div className="col-md-10 menu">
