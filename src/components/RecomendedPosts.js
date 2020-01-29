@@ -5,9 +5,9 @@ import '../templates/styles/articleStyles.css';
 
 
 const RecomendedPosts = ({
-  data: { posts  },
-  pageContext: {
+   pageContext: {
     catId,
+    posts,
   },
 }) => (
     
