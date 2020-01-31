@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 
-
 const PageContent = styled.article`
   margin: 20px 0 0 0;
 `;
@@ -22,6 +21,7 @@ const PageTemplate = ({ data }) => (
          <div  dangerouslySetInnerHTML={{ __html: data.currentPage.content }} />
          
          </PageContent>
+
       </div>
     </div>
   </Layout>
@@ -35,6 +35,7 @@ export const pageQuery = graphql`
     currentPage: wordpressPage(id: { eq: $id }) {
       id
       title
+      slug
       content
       wordpress_parent
       
