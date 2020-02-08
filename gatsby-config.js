@@ -1,14 +1,11 @@
 module.exports = {
-
   siteMetadata: {
     title: `Expat Guide Turkey`,
     description: `Expat Guide Turkey`,
-    keywords: 'turkey',
+    keywords: "turkey",
     author: `@amreshabux`,
- },
+  },
   plugins: [
-  
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -16,13 +13,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    {   
-      resolve: 'gatsby-source-filesystem',
+    {
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },  
-    },  
+        name: "pages",
+      },
+    },
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-less`,
@@ -46,45 +43,41 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         excludedRoutes: [
-          '/wp/v2/users/**',
-          '/wp/v2/settings*',
-          '/wp/v2/themes*',
+          "/wp/v2/users/**",
+          "/wp/v2/settings*",
+          "/wp/v2/themes*",
         ],
         baseUrl: `cms.expatguideturkey.com`,
         protocol: `https`,
         hostingWPCOM: false,
         useACF: true,
-
-       includedRoutes: [
-          "**/categories",
-          "**/posts",
+        verbose: true,
+        includedRoutes: [
+          // "**/categories",
+          // "**/posts",
           "**/pages",
-          "**/tags",
-          "**/users",
-          "**/menus"
+          // "**/tags",
+          // "**/users",
+          // "**/menus"
         ],
         searchAndReplaceContentUrls: {
-          sourceUrl: 'https://cms.expatguideturkey.com',
-          replacementUrl: '',
+          sourceUrl: "https://cms.expatguideturkey.com",
+          replacementUrl: "",
         }, // This path is relative to the root of the site.
       },
     },
 
     `gatsby-plugin-styled-components`,
     {
-      resolve:  'gatsby-plugin-prefetch-google-fonts',
+      resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
         fonts: [
           {
-            family: 'Raleway',
-            variants: ['200', '400', '500', '600', '700'],
-
+            family: "Raleway",
+            variants: ["200", "400", "500", "600", "700"],
           },
-
         ],
-
       },
-
     },
 
     `gatsby-plugin-sitemap`,
@@ -119,9 +112,9 @@ module.exports = {
               changefreq: `daily`,
               priority: 0.7,
             }
-          })
-      }
-    }
+          }),
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
