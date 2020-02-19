@@ -54,7 +54,7 @@ module.exports = {
         verbose: true,
         includedRoutes: [
           // "**/categories",
-          // "**/posts",
+          "**/posts",
           "**/pages",
           // "**/tags",
           // "**/users",

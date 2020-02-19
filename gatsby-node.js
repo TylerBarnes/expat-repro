@@ -12,6 +12,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
+      allWordpressPost {
+        nodes {
+          id
+          status
+          link
+          wordpress_id
+        }
+      }
       allWordpressPage {
         edges {
           node {
@@ -31,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw new Error(result.errors)
   }
 
-  const { allWordpressPage } = result.data
+  const { allWordpressPage, allWordpressPost } = result.data
 
   exports.onCreateWebpackConfig = ({ actions }) => {
     actions.setWebpackConfig({
@@ -41,9 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allWordpressPage.edges.forEach(edge => {
     if (edge.node.status === "publish") {
-      console.log(edge.node.link)
       const path = decodeURIComponent(edge.node.link)
-      console.log(path)
       createPage({
         path,
         component: slash(pageTemplate),
@@ -51,6 +57,23 @@ exports.createPages = async ({ graphql, actions }) => {
           id: edge.node.id,
           parent: edge.node.wordpress_parent,
           wpId: edge.node.wordpress_id,
+        },
+      })
+    }
+  })
+
+  allWordpressPost.nodes.forEach(node => {
+    if (node.status === "publish") {
+      console.log(node.link)
+      const path = decodeURIComponent(node.link)
+      console.log(path)
+      console.log(node.id)
+      createPage({
+        path,
+        component: slash(postTemplate),
+        context: {
+          id: node.id,
+          wpId: node.wordpress_id,
         },
       })
     }

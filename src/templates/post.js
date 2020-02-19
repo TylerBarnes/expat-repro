@@ -15,6 +15,8 @@ class postTemplate extends React.Component {
   render() {
     const post = this.props.data.post
 
+    console.log(this.props)
+
     return (
       <Layout>
         <SEO
@@ -45,7 +47,7 @@ export default postTemplate
 
 export const pageQuery = graphql`
   query($id: String!) {
-    post: wordpressPage(id: { eq: $id }) {
+    post: wordpressPost(id: { eq: $id }) {
       id
       title
       content
